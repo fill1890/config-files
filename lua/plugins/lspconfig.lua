@@ -23,8 +23,10 @@ return {
                     'bib', 'gitcommit', 'markdown', 'org', 'plaintex',
                     'tex', 'rst', 'pandoc', 'lua',
                 },
-            }
+            },
+            lua_ls = {},
         },
+        inlay_hints = { enabled = true },
     },
 
     config = function(_, opts)
@@ -37,6 +39,17 @@ return {
             config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
             lsp[server].setup(config)
         end
+
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+            callback = function(args)
+                local client = vim.lsp.get_client_by_id(args.data.client_id)
+                if client.server_capabilities.inlayHintProvider then
+                    vim.lsp.inlay_hint.enable(true, {bufnr = args.buf})
+                end
+                -- whatever other lsp config you want
+            end
+        })
     end,
 
     dependencies = {
