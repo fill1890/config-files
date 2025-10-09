@@ -1,10 +1,20 @@
 return {
     'navarasu/onedark.nvim',
-    config = function()
-        require'onedark'.load()
+    main = 'onedark',
+    opts = {
+        style = 'warmer',
+        --style = 'light',
+        --colors = {
+        --    bg0 = "#e9e9e9",
+        --    bg1 = "#e0e0e0",
+        --    bg2 = "#dcdcdc",
+        --    bg3 = "#cdcdcd",
+        --    bg_d = "#b0b0b0"
+        --}
+    },
+    init = function()
+        require('onedark').load()
     end,
-    lazy = false,
-    opts = { style = 'warmer' },
     priority = 1000,
 }
 

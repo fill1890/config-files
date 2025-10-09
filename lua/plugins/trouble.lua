@@ -5,6 +5,6 @@ return {
         { '<Leader>t', '<cmd>Trouble diagnostics toggle focus=false filter.buf=0<cr>'}
     },
     opts = {
-        mode = 'document_diagnostics',
+        mode = 'disgnostics',
     },
 }
