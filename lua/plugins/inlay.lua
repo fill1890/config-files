@@ -3,6 +3,6 @@ return {
     event = 'LspAttach',
     config = true,
     opts = {
-        virt_text_pos = 'inline'
+        virt_text_pos = 'eol'
     },
 }
