@@ -1,8 +1,11 @@
 return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    dependencies = { 'Hdoc1509/gh-actions.nvim' },
 
     config = function()
+        require("gh-actions.tree-sitter").setup()
+
         local configs = require('nvim-treesitter.configs')
         configs.setup({
             ensure_installed = {
@@ -16,15 +19,14 @@ return {
                 "vim",
                 "lua",
                 "markdown_inline",
+                "gh_actions_expressions",
             },
             highlight = {
                 enable = true,
             },
             sync_install = false,
         })
-    end,
 
-    init = function()
         vim.cmd 'set autoindent'
         vim.cmd 'filetype plugin indent on'
 
