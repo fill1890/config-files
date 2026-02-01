@@ -30,6 +30,13 @@ return {
 
         vim.opt.foldmethod = 'expr'
         vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = {'html', 'html.jinja', '*.jinja', 'jinja'},
+            callback = function(args)
+                vim.treesitter.stop(args.buf)
+            end
+        })
     end,
 }
 

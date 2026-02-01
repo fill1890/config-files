@@ -52,3 +52,15 @@ opt.spelllang = 'en_au'
 opt.bs = 'indent,start'
 
 vim.cmd([[command SortImports %s/import\s*\zs.*/\=join(sort(split(submatch(0), '\s*,\s*')),', ')]])
+
+vim.filetype.add({
+    extension = {
+        jinja = 'html.jinja',
+        jinja2 = 'html.jinja',
+        j2 = 'html.jinja',
+    },
+    pattern = {
+        ['.*templates/.*%.html'] = 'html.jinja',
+    }
+})
+
