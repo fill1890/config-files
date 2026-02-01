@@ -10,12 +10,8 @@ return {
     opts = {
         servers = {
             clangd = {},
-            --basedpyright = {},
-            pyright = {},
-            --pyrefly = {},
-            --pylsp = {},
+            ty = {},
             neocmake = {},
-            dartls = {},
             ltex = {
                 settings = {ltex = {
                     language = 'en-AU',
