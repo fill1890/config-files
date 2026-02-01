@@ -11,6 +11,7 @@ return {
         servers = {
             clangd = {},
             ty = {},
+            ts_ls = {},
             neocmake = {},
             ltex = {
                 settings = {ltex = {
@@ -26,6 +27,7 @@ return {
                 },
             },
             lua_ls = {},
+            cssls = {},
         },
         inlay_hints = { enabled = true },
     },
