@@ -1,7 +1,6 @@
-### Install Packer
+# neovim Configuration
 
-`git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
+## Installation
 
-### Install
-
-`:PackerSync`
+Install [lazy.nvim](https://lazy.folke.io/installation), and clone this
+repository to `~/.config/nvim/`.
