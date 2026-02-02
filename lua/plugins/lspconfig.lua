@@ -10,24 +10,36 @@ return {
     opts = {
         servers = {
             clangd = {},
-            ty = {},
-            ts_ls = {},
-            neocmake = {},
+            cssls = {},
             ltex = {
-                settings = {ltex = {
-                    language = 'en-AU',
-                    enabled = {
-                        'latex', 'markdown', 'restructuredtext',
-                        'python', 'cmake',
-                    }
-                }},
+                settings = {
+                    ltex = {
+                        language = 'en-AU',
+                        enabled = {
+                            'latex',
+                            'markdown',
+                            'restructuredtext',
+                            'python',
+                            'cmake',
+                        },
+                    },
+                },
                 filetypes = {
-                    'bib', 'gitcommit', 'markdown', 'org', 'plaintex',
-                    'tex', 'rst', 'pandoc', 'lua',
+                    'bib',
+                    'gitcommit',
+                    'markdown',
+                    'org',
+                    'plaintex',
+                    'tex',
+                    'rst',
+                    'pandoc',
+                    'lua',
                 },
             },
             lua_ls = {},
-            cssls = {},
+            neocmake = {},
+            ts_ls = {},
+            ty = {},
         },
         inlay_hints = { enabled = true },
     },

@@ -7,6 +7,7 @@ return {
             css = { 'prettierd', 'prettier' },
             javascript = { 'prettierd', 'prettier' },
             markdown = { 'rumdl' },
+            cpp = { 'clang-format' },
         }
     },
     init = function ()
