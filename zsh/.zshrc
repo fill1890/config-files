@@ -1,15 +1,12 @@
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/Users/Andrew/.zshrc'
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+zmodload -i zsh/complist
+autoload -Uz compinit && compinit
+#zstyle :compinstall filename '/Users/kaz/config/zsh/.zshrc'
+zstyle ':completion:*' menu select=5
 
 alias ls='ls -Ghl'
 alias git-yolo='git commit -am "`curl -s http://whatthecommit.com/index.txt`"'
@@ -87,8 +84,17 @@ function precmd() {
     [[ -n $timer ]] && RPROMPT+=$' %F{cyan}\ue0b6%K{cyan}%F{black}${timer}%F{cyan}%k\ue0b4%f'
     export RPROMPT
 
-    PROMPT=$'%K{blue}%F{black} %35<\ue0c7<%~%<<%F{blue}'
-    PROMPT+='$([[ -n $VIRTUAL_ENV_PROMPT ]] && print "%K{magenta}\ue0b0%F{black}$VIRTUAL_ENV_PROMPT%F{magenta}")'
+    PROMPT=''
+    if [[ -n $VIRTUAL_ENV ]]; then
+        if [[ `pwd` == "${VIRTUAL_ENV%/*}"* ]]; then
+            PROMPT+=$'%F{magenta}%K{blue}\ue0b0'
+        else
+            PROMPT+=$'%F{yellow}%K{blue}\ue0b0'
+        fi
+    else
+        PROMPT+=$'%K{blue} '
+    fi
+    PROMPT+=$'%K{blue}%F{black}%35<\ue0c7<%~%<<%F{blue}'
     PROMPT+='${GITINFO}'
     PROMPT+=$'%k\ue0b0%f '
     export PROMPT
@@ -118,10 +124,15 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     ZSH_PREFIX=/usr/share/zsh/plugins
 else
     ZSH_PREFIX=/opt/local/share
+
 fi
 
-[[ -f $ZSH_PREFIX/zsh-autosuggestions/zsh-autosuggestions.zsh ]] &&
-  source $ZSH_PREFIX/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ -f $ZSH_PREFIX/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+    ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+    source /opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    bindkey '^y' autosuggest-accept
+    bindkey '^[^M' autosuggest-execute
+fi
 
 [[ -f $ZSH_PREFIX/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] &&
   source $ZSH_PREFIX/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
