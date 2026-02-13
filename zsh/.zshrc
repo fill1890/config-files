@@ -114,10 +114,16 @@ man() {
     command man "$@"
 }
 
-[[ -f /opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] &&
-  source /opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    ZSH_PREFIX=/usr/share/zsh/plugins
+else
+    ZSH_PREFIX=/opt/local/share
+fi
 
-[[ -f /opt/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] &&
-  source /opt/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f $ZSH_PREFIX/zsh-autosuggestions/zsh-autosuggestions.zsh ]] &&
+  source $ZSH_PREFIX/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+[[ -f $ZSH_PREFIX/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] &&
+  source $ZSH_PREFIX/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export CLICOLOR=1
