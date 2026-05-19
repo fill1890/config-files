@@ -129,7 +129,7 @@ fi
 
 if [[ -f $ZSH_PREFIX/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
     ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-    source /opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source $ZSH_PREFIX/zsh-autosuggestions/zsh-autosuggestions.zsh
     bindkey '^y' autosuggest-accept
     bindkey '^[^M' autosuggest-execute
 fi
