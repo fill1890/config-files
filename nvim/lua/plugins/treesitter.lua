@@ -1,13 +1,9 @@
 return {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    dependencies = { 'Hdoc1509/gh-actions.nvim' },
+    "romus204/tree-sitter-manager.nvim",
 
     config = function()
-        require("gh-actions.tree-sitter").setup()
 
-        local configs = require('nvim-treesitter.configs')
-        configs.setup({
+        require("tree-sitter-manager").setup({
             ensure_installed = {
                 "c",
                 "java",
@@ -15,16 +11,11 @@ return {
                 "python",
                 "cpp",
                 "make",
-                "markdown",
                 "vim",
                 "lua",
+                "markdown",
                 "markdown_inline",
-                "gh_actions_expressions",
-            },
-            highlight = {
-                enable = true,
-            },
-            sync_install = false,
+            }
         })
 
         vim.cmd 'set autoindent'
